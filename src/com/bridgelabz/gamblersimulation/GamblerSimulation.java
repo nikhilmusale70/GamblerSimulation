@@ -14,7 +14,7 @@ public class GamblerSimulation {
             totalMoney = dailyStake+1;
         else                // for loss
             totalMoney = dailyStake-1;
-
+        
     }
 
     public static int winLoose(){
