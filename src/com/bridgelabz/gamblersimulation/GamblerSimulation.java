@@ -12,6 +12,8 @@ public class GamblerSimulation {
 
         int day = 1;
         int totalMoney=dailyStake;
+        int unluckyDay=100;
+        int luckyDay=100;
 
         while(day<=20){
             Random ran = new Random();
@@ -26,7 +28,14 @@ public class GamblerSimulation {
                     totalMoney = totalMoney - 1;
 
             }
-            day++;
+            if (unluckyDay > totalMoney){
+                unluckyDay=totalMoney;
+                unluckMonth=month
+            }
+            else {
+                luckyDay = totalMoney;
+            }
+                day++;
         }
         if (totalMoney<dailyStake)
             System.out.println("After 20 days you have lost "+ (dailyStake - totalMoney)+ " Dollar");
