@@ -32,7 +32,7 @@ public class GamblerSimulation {
             }
             if (unluckyDay > totalMoney){
                 unluckyDay=totalMoney;
-                unluckMonth=month
+                unluckMonth=month ;
             }
             else {
                 luckyDay = totalMoney;
