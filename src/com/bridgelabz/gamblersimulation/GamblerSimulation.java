@@ -1,12 +1,14 @@
 package com.bridgelabz.gamblersimulation;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class GamblerSimulation {
 
     public static final int dailyStake=200;
     public static final int bet=1;
     public static final int percentage=50;
+    public static final int daysInMonth=30;
 
     public static void main(String[] args) {
 
@@ -19,11 +21,13 @@ public class GamblerSimulation {
         int luckyMonth=1;
         int unluckyDayMoney=dailyStake;
         int luckyDayMoney = dailyStake;
+        int monthIncome;
 
         while (month<=12) {
 
+            monthIncome=0;
             day=1;
-            while (day <= 30) {
+            while (day <= daysInMonth) {
                 Random ran = new Random();
                 totalMoney=dailyStake;
                 int dailyGamePlayed = ran.nextInt(10);
@@ -35,26 +39,21 @@ public class GamblerSimulation {
                     else                            //for loss
                         totalMoney = totalMoney - 1;
                 }
-                if (unluckyDayMoney > totalMoney){
-                    unluckyDay=day;
-                    unluckyMonth=month;
-                    unluckyDayMoney = totalMoney;
-
-                }
-                if(luckyDayMoney < totalMoney){
-                    luckyDay=day;
-                    luckyMonth=month;
-                    luckyDayMoney = totalMoney;
-                }
-
                 day++;
+                monthIncome=monthIncome+totalMoney;
             }
-            month++;
+            if (monthIncome>(dailyStake*daysInMonth)) {
+                System.out.println("You have won this month "+ month+" you have won " + monthIncome + " \nPress 1. to stop game \nPress 2. to continue");
+                Scanner sc = new Scanner(System.in);
+                int choice = sc.nextInt();
+                month++;
+                if (choice == 1)
+                    break;
+                else if (choice == 2)
+                    continue;
+            }
         }
 
-        System.out.println("Unlucly day :- " + unluckyDay + " Unlucky month :- " + unluckyMonth + " lost "+ (dailyStake-unluckyDayMoney) + "dollars");
-
-        System.out.println("lucly day :- " + luckyDay + " lucky month :- " + luckyMonth + " won "+ (luckyDayMoney-dailyStake) + " dollars");
     }
 
     public static double StakePercent(){
