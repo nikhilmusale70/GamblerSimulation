@@ -6,6 +6,7 @@ public class GamblerSimulation {
 
     public static final int dailyStake=200;
     public static final int bet=1;
+    public static final int percentage=50;
 
     public static void main(String[] args) {
 
@@ -18,11 +19,15 @@ public class GamblerSimulation {
                 totalMoney = totalMoney - 1;
                 System.out.println("Unfortunately you loose, Better luck next time" );
             }
-        }while(totalMoney>100 && totalMoney<300);
+        }while(totalMoney> dailyStake - dailyStake*StakePercent() && totalMoney< dailyStake + dailyStake*StakePercent());
 
         System.out.println("Resiging with "+totalMoney+ " money");
     }
-
+    
+    public static double StakePercent(){
+        double percentStake = percentage/100.0;
+        return percentStake;
+    }
     public static int winLoose(){
         Random ran = new Random();
         int result = ran.nextInt(2);
