@@ -10,11 +10,14 @@ public class GamblerSimulation {
     public static void main(String[] args) {
 
         int totalMoney;
-        if (winLoose()==1) //for win
-            totalMoney = dailyStake+1;
-        else                // for loss
-            totalMoney = dailyStake-1;
-        
+        if (winLoose()==1) {            //for win
+            totalMoney = dailyStake + 1;
+            System.out.println("Congratulations you won");
+        }
+        else {                           //for loss
+            totalMoney = dailyStake - 1;
+            System.out.println("Unfortunately you loose, Better luck next time");
+        }
     }
 
     public static int winLoose(){
